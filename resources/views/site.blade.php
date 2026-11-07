@@ -119,6 +119,12 @@ h4{font-size:1rem;font-weight:700}
 .spin{animation:spin 40s linear infinite;transform-box:fill-box;transform-origin:center}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
+.hop{animation:hop 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.hop-sh{animation:hopSh 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.tw{animation:tw 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes hopSh{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.6}}
+@keyframes tw{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.55);opacity:.45}}
 .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:translateY(16px)}to{transform:none}}
 @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.stage{max-width:460px}}
@@ -470,26 +476,111 @@ body{background-size:240px 240px}
       <div class="stage" aria-hidden="true">
         <svg viewBox="0 0 520 520" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <radialGradient id="hg" cx="35%" cy="28%" r="85%"><stop offset="0" stop-color="#3A6BFF"/><stop offset="1" stop-color="#0B1E6B"/></radialGradient>
+            <radialGradient id="hg" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#5A86FF"/><stop offset="1" stop-color="#1238C4"/></radialGradient>
+            <linearGradient id="hground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A3FD0"/><stop offset="1" stop-color="#0F2170"/></linearGradient>
           </defs>
-          <circle cx="260" cy="270" r="225" fill="url(#hg)"/>
-          <text x="260" y="340" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-style="italic" font-weight="800" font-size="220" fill="rgba(255,255,255,.08)">UP</text>
-          <g class="spin"><ellipse cx="260" cy="270" rx="245" ry="96" transform="rotate(-24 260 270)" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/></g>
-          <path d="M70 410 C 120 120, 340 60, 440 300" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 14"/>
-          <g class="bob">
-            <circle cx="440" cy="300" r="36" fill="#E5243B"/>
-            <path d="M408 286 q32 -26 64 2 M408 318 q32 22 64 -2" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          </g>
-          <g class="bob2">
-            <ellipse cx="150" cy="190" rx="52" ry="20" transform="rotate(-18 150 190)" fill="none" stroke="#fff" stroke-width="9"/>
-          </g>
+          <!-- backdrop -->
+          <circle cx="260" cy="250" r="215" fill="url(#hg)"/>
+          <circle cx="260" cy="250" r="160" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="22"/>
+          <text x="260" y="330" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-style="italic" font-weight="800" font-size="220" fill="rgba(255,255,255,.08)">UP</text>
+          <g class="spin"><ellipse cx="260" cy="250" rx="240" ry="92" transform="rotate(-20 260 250)" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round"/></g>
+
+          <!-- confetti -->
           <g>
-            <ellipse cx="130" cy="448" rx="52" ry="8" fill="rgba(0,0,0,.25)"/><rect x="82" y="418" width="96" height="30" rx="15" fill="#E5243B"/>
-            <ellipse cx="248" cy="430" rx="46" ry="7" fill="rgba(0,0,0,.25)"/><rect x="204" y="402" width="88" height="28" rx="14" fill="#fff"/>
-            <ellipse cx="350" cy="410" rx="42" ry="7" fill="rgba(0,0,0,.25)"/><rect x="310" y="384" width="80" height="26" rx="13" fill="#3FC8F7"/>
+            <rect x="52" y="58" width="16" height="7" rx="3.5" fill="#E5243B" transform="rotate(32 60 61)"/>
+            <circle cx="214" cy="46" r="5" fill="#3FC8F7"/>
+            <rect x="318" y="44" width="14" height="6" rx="3" fill="#FFC83D" transform="rotate(-28 325 47)"/>
+            <path d="M398 168 q8 -10 16 0 t16 0" fill="none" stroke="#E5243B" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="478" cy="270" r="5" fill="#fff"/>
+            <rect x="452" y="320" width="14" height="6" rx="3" fill="#3FC8F7" transform="rotate(40 459 323)"/>
+            <rect x="46" y="318" width="15" height="6" rx="3" fill="#FFC83D" transform="rotate(-36 53 321)"/>
+            <circle cx="150" cy="300" r="4" fill="#E5243B"/>
+            <path d="M120 360 v16 M112 368 h16" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
           </g>
-          <polygon points="404,470 432,392 460,470" fill="#E5243B"/><rect x="396" y="466" width="72" height="10" rx="5" fill="#fff"/>
-          <g fill="#fff"><path d="M300 110v26M287 123h26" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="92" cy="300" r="5"/><circle cx="470" cy="150" r="6"/></g>
+          <g fill="#FFC83D">
+            <path class="tw" d="M190 74 Q190 86 202 86 Q190 86 190 98 Q190 86 178 86 Q190 86 190 74Z"/>
+            <path class="tw" style="animation-delay:-1s" d="M452 196 Q452 210 466 210 Q452 210 452 224 Q452 210 438 210 Q452 210 452 196Z"/>
+            <path class="tw" style="animation-delay:-2s" d="M74 380 Q74 390 84 390 Q74 390 74 400 Q74 390 64 390 Q74 390 74 380Z"/>
+          </g>
+
+          <!-- floor -->
+          <path d="M0 462 Q260 418 520 462 V520 H0Z" fill="url(#hground)"/>
+          <path d="M0 462 Q260 418 520 462" fill="none" stroke="#3FC8F7" stroke-width="4"/>
+          <path d="M30 492 Q260 456 490 492" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="3" stroke-dasharray="16 14" stroke-linecap="round"/>
+
+          <!-- striped hula hoop -->
+          <g class="bob2">
+            <ellipse cx="108" cy="150" rx="54" ry="19" transform="rotate(-18 108 150)" fill="none" stroke="#FFC83D" stroke-width="9"/>
+            <ellipse cx="108" cy="150" rx="54" ry="19" transform="rotate(-18 108 150)" fill="none" stroke="#E5243B" stroke-width="9" stroke-dasharray="12 16"/>
+          </g>
+
+          <!-- cones -->
+          <g>
+            <ellipse cx="92" cy="476" rx="34" ry="5" fill="rgba(0,0,0,.25)"/>
+            <polygon points="70,472 92,412 114,472" fill="#FFC83D"/>
+            <polygon points="79.5,446 104.5,446 100,434 84,434" fill="#fff"/>
+            <rect x="62" y="468" width="60" height="9" rx="4.5" fill="#E8A91C"/>
+            <ellipse cx="152" cy="482" rx="24" ry="4" fill="rgba(0,0,0,.25)"/>
+            <polygon points="138,480 152,444 166,480" fill="#E5243B"/>
+            <rect x="132" y="477" width="40" height="7" rx="3.5" fill="#fff"/>
+          </g>
+
+          <!-- beach ball -->
+          <ellipse class="hop-sh" style="animation-duration:6s" cx="432" cy="452" rx="26" ry="5" fill="rgba(0,0,0,.28)"/>
+          <g class="bob">
+            <g transform="rotate(-22 432 362)">
+              <circle cx="432" cy="362" r="32" fill="#FFC83D"/>
+              <ellipse cx="432" cy="362" rx="24" ry="32" fill="#fff"/>
+              <ellipse cx="432" cy="362" rx="11" ry="32" fill="#E5243B"/>
+              <circle cx="432" cy="331" r="4" fill="#3FC8F7"/>
+            </g>
+            <ellipse cx="418" cy="346" rx="9" ry="5" fill="rgba(255,255,255,.5)" transform="rotate(-35 418 346)"/>
+          </g>
+
+          <!-- jumping kid -->
+          <ellipse class="hop-sh" cx="260" cy="466" rx="60" ry="9" fill="rgba(0,0,0,.3)"/>
+          <g class="hop">
+            <g fill="none" stroke="rgba(255,255,255,.65)" stroke-width="4" stroke-linecap="round">
+              <path d="M158 112 q-9 -10 -5 -24"/><path d="M152 142 q-13 -3 -20 -15"/>
+              <path d="M362 112 q9 -10 5 -24"/><path d="M368 142 q13 -3 20 -15"/>
+            </g>
+            <!-- arms -->
+            <g fill="none" stroke="#F6C7A1" stroke-width="15" stroke-linecap="round">
+              <path d="M236 236 Q206 196 186 136"/><path d="M284 236 Q314 196 334 136"/>
+            </g>
+            <circle cx="184" cy="127" r="11" fill="#F6C7A1"/><circle cx="336" cy="127" r="11" fill="#F6C7A1"/>
+            <!-- legs -->
+            <g fill="none" stroke="#F6C7A1" stroke-width="16" stroke-linecap="round">
+              <path d="M240 334 L214 396"/><path d="M280 334 L306 396"/>
+            </g>
+            <g fill="none" stroke="#fff" stroke-width="17" stroke-linecap="round">
+              <path d="M217 389 L214 396"/><path d="M303 389 L306 396"/>
+            </g>
+            <path d="M188 410 Q188 396 204 396 Q218 396 222 404 L222 412 Q205 416 188 410Z" fill="#3FC8F7"/>
+            <path d="M332 410 Q332 396 316 396 Q302 396 298 404 L298 412 Q315 416 332 410Z" fill="#3FC8F7"/>
+            <path d="M190 413 H221 M299 413 H330" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <!-- shorts -->
+            <path d="M222 296 H298 L306 338 L268 342 L260 326 L252 342 L214 338Z" fill="#081447"/>
+            <!-- shirt -->
+            <g fill="none" stroke="#E5243B" stroke-width="26" stroke-linecap="round">
+              <path d="M238 238 L224 218"/><path d="M282 238 L296 218"/>
+            </g>
+            <path d="M228 226 Q260 214 292 226 L298 300 Q260 310 222 300Z" fill="#E5243B"/>
+            <path d="M250 222 Q260 234 270 222" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <text x="260" y="284" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-style="italic" font-weight="800" font-size="36" fill="#fff">UP</text>
+            <!-- head -->
+            <rect x="251" y="204" width="18" height="18" rx="4" fill="#E8B08A"/>
+            <circle cx="218" cy="176" r="8" fill="#E8B08A"/><circle cx="302" cy="176" r="8" fill="#E8B08A"/>
+            <circle cx="260" cy="170" r="42" fill="#F6C7A1"/>
+            <path d="M216 172 A44 44 0 0 1 304 172 Q298 156 282 154 Q270 144 256 150 Q240 144 228 156 Q220 162 216 172Z" fill="#3B2A20"/>
+            <path d="M262 128 q8 -14 20 -10" fill="none" stroke="#3B2A20" stroke-width="5" stroke-linecap="round"/>
+            <g fill="none" stroke="#0B1A4A" stroke-width="4" stroke-linecap="round">
+              <path d="M238 178 q7 -8 14 0"/><path d="M268 178 q7 -8 14 0"/>
+            </g>
+            <circle cx="234" cy="192" r="7" fill="#FF8A9B" opacity=".6"/><circle cx="286" cy="192" r="7" fill="#FF8A9B" opacity=".6"/>
+            <path d="M246 191 Q260 211 274 191Z" fill="#9E1A2C"/>
+            <path d="M253 199 Q260 206 267 199 Q260 195 253 199Z" fill="#FF7A8A"/>
+          </g>
         </svg>
         <div class="chip c1"><i data-i="scale"></i>تعادل</div>
         <div class="chip c2"><i data-i="bolt"></i>چابکی</div>
