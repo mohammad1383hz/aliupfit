@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تنظیمات | مدیریت AliUPFit</title><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{margin:0;background:#f4f8ff;color:#0b1a4a;font:14px/1.8 Vazirmatn,Tahoma,sans-serif}.top{background:#fff;border-bottom:1px solid #d9e4fa;padding:14px max(18px,calc((100% - 960px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-size:18px;font-weight:800}.nav{display:flex;gap:9px;align-items:center}.nav a,.nav button{font:inherit;color:#1239c9;background:#e3ecff;border:0;border-radius:10px;padding:8px 12px;text-decoration:none;cursor:pointer}.nav form{display:inline}.nav .logout{background:#ffe6ea;color:#c4122b}.wrap{max-width:960px;margin:26px auto;padding:0 18px}h1{margin:0;font-size:25px}.sub{color:#566690;margin:4px 0 20px}.panel{background:#fff;border:1px solid #d9e4fa;border-radius:16px;padding:22px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:grid;gap:6px}.wide{grid-column:1/-1}label{font-weight:700}input{width:100%;font:inherit;border:1px solid #d9e4fa;border-radius:10px;padding:9px 11px;color:#0b1a4a}small,.help{color:#566690}.help{margin:4px 0 0}.section-title{font-size:17px;margin:0 0 14px}.save{font:inherit;font-weight:700;border:0;border-radius:11px;background:#1e50ff;color:white;padding:11px 18px;cursor:pointer}.notice{padding:10px 14px;background:#ddf5e9;color:#0f7b4f;border-radius:10px;margin:14px 0}.errors{color:#b42318;background:#fde7e4;padding:10px 14px;border-radius:10px;margin:14px 0}.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ltr{direction:ltr;text-align:left}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.wide{grid-column:auto}.wrap{margin-top:18px}}
+</style></head>
+<body><header class="top"><div class="brand">AliUPFit · تنظیمات سایت</div><nav class="nav"><a href="{{ route('admin.dashboard') }}">درخواست‌ها</a><a href="{{ route('home') }}" target="_blank" rel="noopener">نمایش سایت</a><form method="post" action="{{ route('admin.logout') }}">@csrf<button class="logout" type="submit">خروج</button></form></nav></header>
+<main class="wrap"><h1>تنظیمات قابل‌نمایش سایت</h1><p class="sub">تغییر این داده‌ها در پایگاه‌داده ذخیره می‌شود؛ کلاس‌ها و استایل‌های صفحهٔ عمومی تغییر نمی‌کنند.</p>
+@if(session('success'))<div class="notice">{{ session('success') }}</div>@endif
+@if($errors->any())<div class="errors">{{ $errors->first() }}</div>@endif
+<form method="post" action="{{ route('admin.settings.update') }}">@csrf @method('PUT')
+<section class="panel"><h2 class="section-title">راه‌های ارتباطی و نشانی</h2><div class="grid">
+<div class="field"><label for="phone">شماره تلفن (برای نمایش تماس)</label><input class="ltr" id="phone" name="phone" value="{{ old('phone',$config['phone'] ?? '') }}" placeholder="0912..." dir="ltr"></div>
+<div class="field"><label for="whatsapp">شماره واتساپ با کد کشور، فقط عدد</label><input class="ltr" id="whatsapp" name="whatsapp" value="{{ old('whatsapp',$config['whatsapp'] ?? '') }}" placeholder="98912..." dir="ltr"></div>
+<div class="field"><label for="instagram">نام کاربری اینستاگرام</label><input class="ltr" id="instagram" name="instagram" value="{{ old('instagram',$config['instagram'] ?? '') }}" placeholder="username" dir="ltr"></div>
+<div class="field"><label for="address">نشانی کلاس‌ها</label><input id="address" name="address" value="{{ old('address',$address) }}" required></div>
+<div class="field wide"><label for="coachPhoto">نشانی تصویر مربی (اختیاری)</label><input class="ltr" id="coachPhoto" name="coachPhoto" value="{{ old('coachPhoto',$config['coachPhoto'] ?? '') }}" placeholder="https://..." dir="ltr"><small>در صورت خالی بودن، تصویر داخل نسخهٔ اصلی سایت حفظ می‌شود.</small></div>
+</div></section>
+<section class="panel"><h2 class="section-title">قیمت‌ها</h2><div class="grid">
+<div class="field"><label for="price_training">برنامه تمرینی</label><input id="price_training" name="price_training" value="{{ old('price_training',$config['prices']['training'] ?? '') }}"></div>
+<div class="field"><label for="price_nutrition">راهنمای تغذیه</label><input id="price_nutrition" name="price_nutrition" value="{{ old('price_nutrition',$config['prices']['nutrition'] ?? '') }}"></div>
+<div class="field"><label for="price_assessment">ارزیابی</label><input id="price_assessment" name="price_assessment" value="{{ old('price_assessment',$config['prices']['assessment'] ?? '') }}"></div>
+<p class="help wide">قیمت را همان‌طور که باید روی سایت دیده شود وارد کنید (مثلاً «تماس بگیرید» یا «۲٬۰۰۰٬۰۰۰ تومان»).</p>
+</div></section>
+<section class="panel"><h2 class="section-title">ظرفیت سانس‌ها</h2><p class="help">اگر ظرفیت تنظیم نشده، مقدار را خالی بگذارید؛ رفتار فعلی سایت حفظ می‌شود.</p><div class="grid">
+<div class="field"><label for="capacity_s612">گروه ۶ تا ۱۲ سال (ساعت زوج و فرد)</label><input id="capacity_s612" name="capacity_s612" type="number" min="0" max="1000" value="{{ old('capacity_s612',$config['capacity']['s612'] ?? '') }}"></div>
+<div class="field"><label for="capacity_s35a">گروه ۳ تا ۵ سال، سانس اول</label><input id="capacity_s35a" name="capacity_s35a" type="number" min="0" max="1000" value="{{ old('capacity_s35a',$config['capacity']['s35a'] ?? '') }}"></div>
+<div class="field"><label for="capacity_s35b">گروه ۳ تا ۵ سال، سانس دوم</label><input id="capacity_s35b" name="capacity_s35b" type="number" min="0" max="1000" value="{{ old('capacity_s35b',$config['capacity']['s35b'] ?? '') }}"></div>
+</div></section><div class="actions"><button class="save" type="submit">ذخیرهٔ تنظیمات</button><a href="{{ route('admin.dashboard') }}">بازگشت به درخواست‌ها</a></div>
+</form></main></body></html>
