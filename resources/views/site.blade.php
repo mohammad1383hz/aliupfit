@@ -108,23 +108,14 @@ h4{font-size:1rem;font-weight:700}
 .fact i,.fact svg{color:var(--brand)}
 .fact b{display:block;font-size:.95rem}
 .stage{position:relative;aspect-ratio:1/1;width:100%;max-width:560px;margin-inline:auto;border-radius:36px;background:var(--navy);overflow:hidden;box-shadow:var(--shadow);isolation:isolate}
-.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
 .chip{position:absolute;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.96);color:#0B1A4A;border-radius:999px;padding:6px 16px 6px 12px;font-weight:700;font-size:.9rem;line-height:1.5;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
 .chip svg{position:static;width:20px;height:20px;color:#1E50FF}
 .chip.c1{top:9%;inset-inline-start:7%;animation:bob 6s ease-in-out infinite}
 .chip.c2{top:44%;inset-inline-end:5%;animation:bob 7s ease-in-out -2s infinite}
 .chip.c3{bottom:8%;inset-inline-start:9%;animation:bob 6.5s ease-in-out -4s infinite}
-.bob{animation:bob 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-.bob2{animation:bob 7s ease-in-out -3s infinite;transform-box:fill-box;transform-origin:center}
-.spin{animation:spin 40s linear infinite;transform-box:fill-box;transform-origin:center}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hop{animation:hop 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-.hop-sh{animation:hopSh 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-.tw{animation:tw 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-@keyframes hopSh{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.6}}
-@keyframes tw{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.55);opacity:.45}}
 .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:translateY(16px)}to{transform:none}}
 @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.stage{max-width:460px}}
@@ -265,10 +256,7 @@ h4{font-size:1rem;font-weight:700}
 .cred li{display:flex;gap:16px;align-items:center;padding:16px 0;border-top:1px solid var(--line);font-weight:500}
 .cred li:last-child{border-bottom:1px solid var(--line)}
 .cred .bub{width:44px;height:44px;border-radius:14px;background:var(--brand-soft);color:var(--brand-ink);display:grid;place-items:center;flex:none}
-.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.slot{aspect-ratio:4/3;border:2px dashed var(--line);border-radius:20px;display:grid;place-items:center;align-content:center;gap:6px;color:var(--muted);text-align:center;font-size:.9rem;padding:12px}
 @media (max-width:900px){.coach{grid-template-columns:1fr}.portrait{aspect-ratio:16/11;max-width:560px}}
-@media (max-width:560px){.slots{grid-template-columns:1fr 1fr}}
 
 /* plans */
 .tabs{display:flex;gap:6px;background:var(--surface-2);padding:6px;border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto;margin-bottom:28px}
@@ -354,6 +342,33 @@ h4{font-size:1rem;font-weight:700}
 .gal .ph{min-height:320px}
 .gal .ph img{position:absolute;inset:0}
 @media (max-width:640px){.gal{grid-template-columns:1fr}.gal .ph{min-height:0;aspect-ratio:4/3}}
+/* client photos and videos */
+.svc-art.has-photo{place-items:end start;padding:18px 22px}
+.svc-art.has-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .6s}
+.svc-art.has-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,20,71,.82),rgba(8,20,71,0) 62%)}
+.svc:hover .svc-art.has-photo>img{transform:scale(1.05)}
+.has-photo .age{background:var(--btn-red);border-radius:18px;padding:6px 16px 2px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.tone-navy.has-photo .age{background:var(--btn)}
+.has-photo .age b{font-size:clamp(2.4rem,5vw,3.2rem)}
+.has-photo .age small{opacity:1}
+.g-photo{margin:0;aspect-ratio:16/10;overflow:hidden}
+.g-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pgrid .ph{aspect-ratio:3/4}
+.pgrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.moments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(20px,3vw,36px)}
+.moments .ph{aspect-ratio:9/16}
+.moments video{display:block;width:100%;height:100%;object-fit:cover}
+.certs{display:grid;grid-template-columns:2fr 3fr 3fr;gap:16px}
+.certs .ph{height:clamp(220px,24vw,340px)}
+.course-teaser{display:grid;gap:14px;justify-items:start;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,40px);transition:transform .2s ease,box-shadow .2s ease,border-color .2s}
+.course-teaser:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brand)}
+.course-teaser:hover .more svg{transform:translateX(-4px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.courses{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tone-blue{color:#fff}
+@media (max-width:900px){.pgrid,.moments{grid-template-columns:repeat(2,minmax(0,1fr))}.courses{grid-template-columns:1fr}}
+@media (max-width:640px){.certs{grid-template-columns:1fr 1fr}.certs .ph{height:auto;aspect-ratio:3/2}.certs .ph:first-child{grid-column:1/-1;aspect-ratio:4/5}}
 
 .prices{display:grid;gap:10px;border-top:1px dashed var(--line);padding-top:14px}
 .prices li{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:500}
@@ -425,6 +440,7 @@ body{background-size:240px 240px}
     <nav class="nav" aria-label="منوی اصلی">
       <a href="#home" data-go="home">خانه</a>
       <a href="#classes" data-go="classes">کلاس‌ها و ثبت‌نام</a>
+      <a href="#courses" data-go="courses">دوره‌ها</a>
       <a href="#coach" data-go="coach">درباره مربی</a>
       <a href="#plans" data-go="plans">برنامه تمرینی و تغذیه</a>
       <a href="#blog" data-go="blog">مقالات</a>
@@ -440,6 +456,7 @@ body{background-size:240px 240px}
     <div class="wrap">
       <a class="dl" href="#home" data-go="home">خانه</a>
       <a class="dl" href="#classes" data-go="classes">کلاس‌ها و ثبت‌نام</a>
+      <a class="dl" href="#courses" data-go="courses">دوره‌ها</a>
       <a class="dl" href="#coach" data-go="coach">درباره مربی</a>
       <a class="dl" href="#plans" data-go="plans">برنامه تمرینی و تغذیه</a>
       <a class="dl" href="#blog" data-go="blog">مقالات</a>
@@ -468,120 +485,13 @@ body{background-size:240px 240px}
         <div class="facts-row">
           <div class="fact"><i data-i="award" data-s="26"></i><span><b>دانشگاه تهران</b>کارشناس علوم ورزشی</span></div>
           <div class="fact"><i data-i="users" data-s="26"></i><span><b>۳ تا ۱۲ سال</b>دو گروه سنی</span></div>
-          <div class="fact"><i data-i="pin" data-s="26"></i><span><b>خیابان آزادی</b>برج نگین، تهران</span></div>
+          <div class="fact"><i data-i="pin" data-s="26"></i><span><b>تهران</b>خیابان آزادی</span></div>
         </div>
       </div>
 
       <div class="stage-wrap">
-      <div class="stage" aria-hidden="true">
-        <svg viewBox="0 0 520 520" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="hg" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#5A86FF"/><stop offset="1" stop-color="#1238C4"/></radialGradient>
-            <linearGradient id="hground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A3FD0"/><stop offset="1" stop-color="#0F2170"/></linearGradient>
-          </defs>
-          <!-- backdrop -->
-          <circle cx="260" cy="250" r="215" fill="url(#hg)"/>
-          <circle cx="260" cy="250" r="160" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="22"/>
-          <text x="260" y="330" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-style="italic" font-weight="800" font-size="220" fill="rgba(255,255,255,.08)">UP</text>
-          <g class="spin"><ellipse cx="260" cy="250" rx="240" ry="92" transform="rotate(-20 260 250)" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round"/></g>
-
-          <!-- confetti -->
-          <g>
-            <rect x="52" y="58" width="16" height="7" rx="3.5" fill="#E5243B" transform="rotate(32 60 61)"/>
-            <circle cx="214" cy="46" r="5" fill="#3FC8F7"/>
-            <rect x="318" y="44" width="14" height="6" rx="3" fill="#FFC83D" transform="rotate(-28 325 47)"/>
-            <path d="M398 168 q8 -10 16 0 t16 0" fill="none" stroke="#E5243B" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="478" cy="270" r="5" fill="#fff"/>
-            <rect x="452" y="320" width="14" height="6" rx="3" fill="#3FC8F7" transform="rotate(40 459 323)"/>
-            <rect x="46" y="318" width="15" height="6" rx="3" fill="#FFC83D" transform="rotate(-36 53 321)"/>
-            <circle cx="150" cy="300" r="4" fill="#E5243B"/>
-            <path d="M120 360 v16 M112 368 h16" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-          </g>
-          <g fill="#FFC83D">
-            <path class="tw" d="M190 74 Q190 86 202 86 Q190 86 190 98 Q190 86 178 86 Q190 86 190 74Z"/>
-            <path class="tw" style="animation-delay:-1s" d="M452 196 Q452 210 466 210 Q452 210 452 224 Q452 210 438 210 Q452 210 452 196Z"/>
-            <path class="tw" style="animation-delay:-2s" d="M74 380 Q74 390 84 390 Q74 390 74 400 Q74 390 64 390 Q74 390 74 380Z"/>
-          </g>
-
-          <!-- floor -->
-          <path d="M0 462 Q260 418 520 462 V520 H0Z" fill="url(#hground)"/>
-          <path d="M0 462 Q260 418 520 462" fill="none" stroke="#3FC8F7" stroke-width="4"/>
-          <path d="M30 492 Q260 456 490 492" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="3" stroke-dasharray="16 14" stroke-linecap="round"/>
-
-          <!-- striped hula hoop -->
-          <g class="bob2">
-            <ellipse cx="108" cy="150" rx="54" ry="19" transform="rotate(-18 108 150)" fill="none" stroke="#FFC83D" stroke-width="9"/>
-            <ellipse cx="108" cy="150" rx="54" ry="19" transform="rotate(-18 108 150)" fill="none" stroke="#E5243B" stroke-width="9" stroke-dasharray="12 16"/>
-          </g>
-
-          <!-- cones -->
-          <g>
-            <ellipse cx="92" cy="476" rx="34" ry="5" fill="rgba(0,0,0,.25)"/>
-            <polygon points="70,472 92,412 114,472" fill="#FFC83D"/>
-            <polygon points="79.5,446 104.5,446 100,434 84,434" fill="#fff"/>
-            <rect x="62" y="468" width="60" height="9" rx="4.5" fill="#E8A91C"/>
-            <ellipse cx="152" cy="482" rx="24" ry="4" fill="rgba(0,0,0,.25)"/>
-            <polygon points="138,480 152,444 166,480" fill="#E5243B"/>
-            <rect x="132" y="477" width="40" height="7" rx="3.5" fill="#fff"/>
-          </g>
-
-          <!-- beach ball -->
-          <ellipse class="hop-sh" style="animation-duration:6s" cx="432" cy="452" rx="26" ry="5" fill="rgba(0,0,0,.28)"/>
-          <g class="bob">
-            <g transform="rotate(-22 432 362)">
-              <circle cx="432" cy="362" r="32" fill="#FFC83D"/>
-              <ellipse cx="432" cy="362" rx="24" ry="32" fill="#fff"/>
-              <ellipse cx="432" cy="362" rx="11" ry="32" fill="#E5243B"/>
-              <circle cx="432" cy="331" r="4" fill="#3FC8F7"/>
-            </g>
-            <ellipse cx="418" cy="346" rx="9" ry="5" fill="rgba(255,255,255,.5)" transform="rotate(-35 418 346)"/>
-          </g>
-
-          <!-- jumping kid -->
-          <ellipse class="hop-sh" cx="260" cy="466" rx="60" ry="9" fill="rgba(0,0,0,.3)"/>
-          <g class="hop">
-            <g fill="none" stroke="rgba(255,255,255,.65)" stroke-width="4" stroke-linecap="round">
-              <path d="M158 112 q-9 -10 -5 -24"/><path d="M152 142 q-13 -3 -20 -15"/>
-              <path d="M362 112 q9 -10 5 -24"/><path d="M368 142 q13 -3 20 -15"/>
-            </g>
-            <!-- arms -->
-            <g fill="none" stroke="#F6C7A1" stroke-width="15" stroke-linecap="round">
-              <path d="M236 236 Q206 196 186 136"/><path d="M284 236 Q314 196 334 136"/>
-            </g>
-            <circle cx="184" cy="127" r="11" fill="#F6C7A1"/><circle cx="336" cy="127" r="11" fill="#F6C7A1"/>
-            <!-- legs -->
-            <g fill="none" stroke="#F6C7A1" stroke-width="16" stroke-linecap="round">
-              <path d="M240 334 L214 396"/><path d="M280 334 L306 396"/>
-            </g>
-            <g fill="none" stroke="#fff" stroke-width="17" stroke-linecap="round">
-              <path d="M217 389 L214 396"/><path d="M303 389 L306 396"/>
-            </g>
-            <path d="M188 410 Q188 396 204 396 Q218 396 222 404 L222 412 Q205 416 188 410Z" fill="#3FC8F7"/>
-            <path d="M332 410 Q332 396 316 396 Q302 396 298 404 L298 412 Q315 416 332 410Z" fill="#3FC8F7"/>
-            <path d="M190 413 H221 M299 413 H330" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-            <!-- shorts -->
-            <path d="M222 296 H298 L306 338 L268 342 L260 326 L252 342 L214 338Z" fill="#081447"/>
-            <!-- shirt -->
-            <g fill="none" stroke="#E5243B" stroke-width="26" stroke-linecap="round">
-              <path d="M238 238 L224 218"/><path d="M282 238 L296 218"/>
-            </g>
-            <path d="M228 226 Q260 214 292 226 L298 300 Q260 310 222 300Z" fill="#E5243B"/>
-            <path d="M250 222 Q260 234 270 222" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-            <text x="260" y="284" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-style="italic" font-weight="800" font-size="36" fill="#fff">UP</text>
-            <!-- head -->
-            <rect x="251" y="204" width="18" height="18" rx="4" fill="#E8B08A"/>
-            <circle cx="218" cy="176" r="8" fill="#E8B08A"/><circle cx="302" cy="176" r="8" fill="#E8B08A"/>
-            <circle cx="260" cy="170" r="42" fill="#F6C7A1"/>
-            <path d="M216 172 A44 44 0 0 1 304 172 Q298 156 282 154 Q270 144 256 150 Q240 144 228 156 Q220 162 216 172Z" fill="#3B2A20"/>
-            <path d="M262 128 q8 -14 20 -10" fill="none" stroke="#3B2A20" stroke-width="5" stroke-linecap="round"/>
-            <g fill="none" stroke="#0B1A4A" stroke-width="4" stroke-linecap="round">
-              <path d="M238 178 q7 -8 14 0"/><path d="M268 178 q7 -8 14 0"/>
-            </g>
-            <circle cx="234" cy="192" r="7" fill="#FF8A9B" opacity=".6"/><circle cx="286" cy="192" r="7" fill="#FF8A9B" opacity=".6"/>
-            <path d="M246 191 Q260 211 274 191Z" fill="#9E1A2C"/>
-            <path d="M253 199 Q260 206 267 199 Q260 195 253 199Z" fill="#FF7A8A"/>
-          </g>
-        </svg>
+      <div class="stage">
+        <img src="{{ asset('images/hero.webp') }}" alt="علی فهیمی در کنار یکی از شاگردانش در سالن ورزش" width="960" height="1280" fetchpriority="high">
         <div class="chip c1"><i data-i="scale"></i>تعادل</div>
         <div class="chip c2"><i data-i="bolt"></i>چابکی</div>
         <div class="chip c3"><i data-i="target"></i>هماهنگی</div>
@@ -601,11 +511,11 @@ body{background-size:240px 240px}
       </div>
       <div class="svc-grid">
         <a class="svc svc-lg" href="#classes" data-go="classes" data-group="g35" data-scroll="groups">
-          <div class="svc-art tone-red"><span class="age"><b>۳–۵</b><small>سال</small></span></div>
+          <div class="svc-art tone-red has-photo"><img src="{{ asset('images/class-3-5.webp') }}" alt="" width="960" height="1280" loading="lazy"><span class="age"><b>۳–۵</b><small>سال</small></span></div>
           <div class="svc-body"><h3>کلاس ورزش کودکان ۳ تا ۵ سال</h3><p>بازی‌های حرکتی متناسب با سن، برای تعادل و هماهنگی و یک تجربه شاد از ورزش. دو سانس در هفته.</p><span class="pill pill-red" data-ptag="g35"></span><span class="more">مشاهده کلاس <i data-i="arrow" data-s="18"></i></span></div>
         </a>
         <a class="svc svc-lg" href="#classes" data-go="classes" data-group="g612" data-scroll="groups">
-          <div class="svc-art tone-navy"><span class="age"><b>۶–۱۲</b><small>سال</small></span></div>
+          <div class="svc-art tone-navy has-photo"><img src="{{ asset('images/class-6-12.webp') }}" alt="" width="1280" height="960" loading="lazy"><span class="age"><b>۶–۱۲</b><small>سال</small></span></div>
           <div class="svc-body"><h3>کلاس ورزش کودکان ۶ تا ۱۲ سال</h3><p>آمادگی جسمانی در قالب بازی؛ قدرت، سرعت، چابکی و استقامت متناسب با سن.</p><span class="pill pill-red" data-ptag="g612"></span><span class="more">مشاهده کلاس <i data-i="arrow" data-s="18"></i></span></div>
         </a>
         <a class="svc" href="#plans" data-go="plans" data-tab="training">
@@ -621,6 +531,18 @@ body{background-size:240px 240px}
           <div class="svc-body"><h3>ارزیابی آمادگی جسمانی و مهارت‌های حرکتی کودکان</h3><p>تصویری روشن از نقطه شروع کودک و مسیر پیشرفتش.</p><span class="more">درخواست ارزیابی <i data-i="arrow" data-s="18"></i></span></div>
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <a class="course-teaser" href="#courses" data-go="courses">
+        <p class="eyebrow">به‌زودی</p>
+        <h2>دوره‌های بازی و حرکت برای کودکان</h2>
+        <p class="muted">۵۰ بازی با وسایل خانه، برنامه یک‌ماهه منظم و پشتیبانی کامل؛ در سه گروه سنی.</p>
+        <div class="tags"><span class="pill pill-red">کوچولوهای ماجراجو · ۳–۵ سال</span><span class="pill">کوچولوهای شگفت‌انگیز · ۶–۸ سال</span><span class="pill">قهرمانان · ۹–۱۲ سال</span></div>
+        <span class="more">مشاهده دوره‌ها <i data-i="arrow" data-s="18"></i></span>
+      </a>
     </div>
   </section>
 
@@ -649,6 +571,27 @@ body{background-size:240px 240px}
         <figure class="ph ph-a"><img data-photo="group" alt="گروهی از کودکان در کنار مربی در سالن ورزشی" loading="lazy"><figcaption>کلاس گروهی</figcaption></figure>
         <figure class="ph ph-b"><img data-photo="coach" alt="کودک و مربی در سالن ورزشی" loading="lazy"><figcaption>تمرین و بازی</figcaption></figure>
         <span class="blob blob-blue" aria-hidden="true"></span><span class="blob blob-red" aria-hidden="true"></span>
+      </div>
+      <div class="moments">
+        <figure class="ph"><video src="{{ asset('videos/moment-1.mp4') }}" poster="{{ asset('videos/moment-1.webp') }}" autoplay muted loop playsinline preload="metadata" aria-label="کودکان در حال تمرین روی تردمیل"></video></figure>
+        <figure class="ph"><video src="{{ asset('videos/moment-2.mp4') }}" poster="{{ asset('videos/moment-2.webp') }}" autoplay muted loop playsinline preload="metadata" aria-label="آویزان شدن از نردبان دیواری"></video></figure>
+        <figure class="ph"><video src="{{ asset('videos/moment-3.mp4') }}" poster="{{ asset('videos/moment-3.webp') }}" autoplay muted loop playsinline preload="metadata" aria-label="تمرین پرش با همراهی مربی"></video></figure>
+        <figure class="ph"><video src="{{ asset('videos/moment-4.mp4') }}" poster="{{ asset('videos/moment-4.webp') }}" autoplay muted loop playsinline preload="metadata" aria-label="تمرین تعادلی روی توپ با همراهی مربی"></video></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="shead">
+        <p class="eyebrow">محل برگزاری کلاس‌ها</p>
+        <h2 data-type>فضای کلاس</h2>
+        <p class="muted">سالنی روشن و مجهز با کف ایمن و وسایل متنوع برای بازی و تمرین کودکان.</p>
+      </div>
+      <div class="pgrid">
+        <figure class="ph"><img src="{{ asset('images/space-1.webp') }}" alt="سالن تمرین با کف سبز و شماره‌گذاری‌شده" width="960" height="1280" loading="lazy"></figure>
+        <figure class="ph"><img src="{{ asset('images/space-2.webp') }}" alt="دمبل‌ها و توپ‌های طبی رنگی" width="960" height="1280" loading="lazy"></figure>
+        <figure class="ph"><img src="{{ asset('images/space-3.webp') }}" alt="کُن‌ها، حلقه‌ها، توپ‌ها و کش‌های تمرینی" width="960" height="1280" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -697,6 +640,7 @@ body{background-size:240px 240px}
   <section class="sec" id="groups" style="padding-top:28px">
     <div class="wrap groups">
       <article class="group">
+        <figure class="g-photo"><img src="{{ asset('images/class-6-12.webp') }}" alt="علی فهیمی با شاگردان کلاس ۶ تا ۱۲ سال" width="1280" height="960" loading="lazy"></figure>
         <header class="g-head tone-navy"><span class="age"><b>۶–۱۲</b><small>سال</small></span><div><p class="kicker">گروه اول</p><h3>ورزش و آمادگی جسمانی کودکان</h3></div></header>
         <div class="g-body">
           <ul class="facts">
@@ -719,6 +663,7 @@ body{background-size:240px 240px}
       </article>
 
       <article class="group">
+        <figure class="g-photo"><img src="{{ asset('images/class-3-5.webp') }}" alt="علی فهیمی با یکی از شاگردان کلاس ۳ تا ۵ سال" width="960" height="1280" loading="lazy"></figure>
         <header class="g-head tone-red"><span class="age"><b>۳–۵</b><small>سال</small></span><div><p class="kicker">گروه دوم</p><h3>ورزش کودکان ۳ تا ۵ سال</h3></div></header>
         <div class="g-body">
           <div class="sess"><b>سانس اول</b><div class="row"><span><i data-i="calendar" data-s="18"></i>یکشنبه و سه‌شنبه</span><span><i data-i="clock" data-s="18"></i>۱۲:۰۰ تا ۱۳:۰۰</span><span data-cap="s35a"></span></div></div>
@@ -760,6 +705,55 @@ body{background-size:240px 240px}
   </section>
 </div>
 
+<!-- ================= COURSES ================= -->
+<div id="v-courses" hidden>
+  <div class="wrap phead">
+    <p class="eyebrow">دوره‌ها</p>
+    <h1 data-type>دوره‌های بازی و حرکت برای کودکان</h1>
+    <p>هر دوره شامل ۵۰ بازی است که با وسایل خانه طراحی شده‌اند، همراه با برنامه یک‌ماهه منظم و پشتیبانی کامل.</p>
+  </div>
+  <section class="sec" style="padding-top:28px">
+    <div class="wrap groups courses">
+      <article class="group">
+        <header class="g-head tone-red"><span class="age"><b>۳–۵</b><small>سال</small></span><div><p class="kicker">دوره اول</p><h3>کوچولوهای ماجراجو</h3></div></header>
+        <div class="g-body">
+          <span class="pill pill-red" style="justify-self:start">به‌زودی ارائه می‌شود</span>
+          <ul class="checks">
+            <li>۵۰ بازی طراحی‌شده با وسایل خانه</li>
+            <li>برنامه یک‌ماهه منظم و هدفمند برای اجرای بازی‌ها</li>
+            <li>طراحی و تدوین بازی‌ها متناسب با سن کودک</li>
+            <li>پشتیبانی کامل در طول دوره</li>
+          </ul>
+        </div>
+      </article>
+      <article class="group">
+        <header class="g-head tone-blue"><span class="age"><b>۶–۸</b><small>سال</small></span><div><p class="kicker">دوره دوم</p><h3>کوچولوهای شگفت‌انگیز</h3></div></header>
+        <div class="g-body">
+          <span class="pill pill-red" style="justify-self:start">به‌زودی ارائه می‌شود</span>
+          <ul class="checks">
+            <li>۵۰ بازی طراحی‌شده با وسایل خانه</li>
+            <li>برنامه یک‌ماهه منظم و هدفمند برای اجرای بازی‌ها</li>
+            <li>طراحی و تدوین بازی‌ها متناسب با سن کودک</li>
+            <li>پشتیبانی کامل در طول دوره</li>
+          </ul>
+        </div>
+      </article>
+      <article class="group">
+        <header class="g-head tone-navy"><span class="age"><b>۹–۱۲</b><small>سال</small></span><div><p class="kicker">دوره سوم</p><h3>قهرمانان</h3></div></header>
+        <div class="g-body">
+          <span class="pill pill-red" style="justify-self:start">به‌زودی ارائه می‌شود</span>
+          <ul class="checks">
+            <li>۵۰ بازی طراحی‌شده با وسایل خانه</li>
+            <li>برنامه یک‌ماهه منظم و هدفمند برای اجرای بازی‌ها</li>
+            <li>طراحی و تدوین بازی‌ها متناسب با سن کودک</li>
+            <li>پشتیبانی کامل در طول دوره</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
 <!-- ================= COACH ================= -->
 <div id="v-coach" hidden>
   <div class="wrap phead">
@@ -792,15 +786,18 @@ body{background-size:240px 240px}
   </section>
   <section class="sec" style="padding-top:0">
     <div class="wrap" style="display:grid;gap:22px">
-      <div class="shead" style="margin:0"><h2>گواهینامه‌ها و تصاویر فعالیت‌ها</h2><p class="muted">این بخش برای درج مدارک تخصصی، گواهینامه‌ها و عکس‌های تمرین آماده شده است.</p></div>
-      <div class="gal">
-        <figure class="ph"><img data-photo="coach" alt="کودک و مربی در سالن ورزشی" loading="lazy"></figure>
-        <figure class="ph"><img data-photo="group" alt="گروهی از کودکان در کنار مربی" loading="lazy"></figure>
+      <div class="shead" style="margin:0"><h2>گواهینامه‌ها و تصاویر فعالیت‌ها</h2></div>
+      <h3>گواهینامه‌ها و مدارک</h3>
+      <div class="certs">
+        <figure class="ph"><img src="{{ asset('images/cert-3.webp') }}" alt="علی فهیمی در جشن فارغ‌التحصیلی دانشگاه تهران" width="853" height="1280" loading="lazy"><figcaption>فارغ‌التحصیلی دانشگاه تهران</figcaption></figure>
+        <figure class="ph"><img src="{{ asset('images/cert-1.webp') }}" alt="عکس گروهی جشن فارغ‌التحصیلی" width="1280" height="853" loading="lazy"></figure>
+        <figure class="ph"><img src="{{ asset('images/cert-2.webp') }}" alt="عکس گروهی فارغ‌التحصیلان مقابل سردر دانشگاه تهران" width="1280" height="853" loading="lazy"></figure>
       </div>
-      <div class="slots">
-        <div class="slot"><i data-i="award" data-s="28"></i>گواهینامه</div>
-        <div class="slot"><i data-i="book" data-s="28"></i>مدرک تخصصی</div>
-        <div class="slot"><i data-i="image" data-s="28"></i>تصویر فعالیت</div>
+      <h3 style="margin-top:12px">تصاویر فعالیت‌ها</h3>
+      <div class="pgrid">
+        <figure class="ph"><img src="{{ asset('images/activity-1.webp') }}" alt="علی فهیمی و شاگردانش در سالن ورزش" width="960" height="1280" loading="lazy"></figure>
+        <figure class="ph"><img src="{{ asset('images/activity-2.webp') }}" alt="تمرین با کُن‌های رنگی" width="960" height="1280" loading="lazy"></figure>
+        <figure class="ph"><img src="{{ asset('images/activity-3.webp') }}" alt="مربی در حال آموزش به کودک" width="960" height="1280" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -846,8 +843,20 @@ body{background-size:240px 240px}
         <div class="plan-side">
           <h2>ارزیابی آمادگی جسمانی و مهارت‌های حرکتی کودکان</h2>
           <p class="muted">ارزیابی کمک می‌کند نقطه شروع کودک در تعادل، هماهنگی، چابکی و آمادگی جسمانی روشن شود و پیشرفت او در طول دوره قابل پیگیری باشد.</p>
+          <div style="display:grid;gap:10px"><h3>ارزیابی کامل کودک شامل:</h3>
+            <ul class="checks">
+              <li>ارزیابی سن رشد</li>
+              <li>ارزیابی با دستگاه بادی‌آنالیز</li>
+              <li>ارزیابی با آزمون‌های روان‌شناسی</li>
+              <li>ارزیابی آمادگی جسمانی کودک</li>
+            </ul>
+          </div>
           <div class="price" data-price="assessment"></div>
           <ol class="steps"><li>ثبت درخواست و اطلاعات کودک</li><li>هماهنگی زمان ارزیابی</li><li>ارزیابی و ارائه نتیجه به والدین</li></ol>
+          <div class="pgrid two">
+            <figure class="ph"><img src="{{ asset('images/assessment-1.webp') }}" alt="پرونده ارزیابی و پایش ورزش کودک AliUPFit" width="960" height="1280" loading="lazy"></figure>
+            <figure class="ph"><img src="{{ asset('images/assessment-2.webp') }}" alt="ارزیابی ترکیب بدن کودک با دستگاه بادی‌آنالیز" width="960" height="1280" loading="lazy"></figure>
+          </div>
         </div>
         <div class="card" id="form-assessment"></div>
       </div>
@@ -931,6 +940,7 @@ body{background-size:240px 240px}
         <h4>صفحه‌ها</h4>
         <ul>
           <li><a href="#classes" data-go="classes">کلاس‌ها و ثبت‌نام</a></li>
+          <li><a href="#courses" data-go="courses">دوره‌ها</a></li>
           <li><a href="#coach" data-go="coach">درباره مربی</a></li>
           <li><a href="#plans" data-go="plans">برنامه تمرینی و تغذیه</a></li>
           <li><a href="#blog" data-go="blog">مقالات</a></li>
@@ -979,7 +989,7 @@ const PACKS = {
   g612: [{id: 'کلاس گروهی', label: 'کلاس گروهی', u: 8}, {id: 'بسته ۲۰ جلسه‌ای', label: 'بسته ۲۰ جلسه‌ای', u: 10}],
   g35: [{id: '۸ جلسه', label: '۸ جلسه', u: 6}]
 };
-if(!CONFIG.prices.training) CONFIG.prices.training = money(2);
+if(!CONFIG.prices.training) CONFIG.prices.training = money(20);
 
 /* ---------- آیکن‌ها ---------- */
 const ICONS = {
@@ -1242,7 +1252,7 @@ function contactHTML(){
 }
 
 /* ---------- ناوبری ---------- */
-const ROUTES = ['home', 'classes', 'coach', 'plans', 'blog', 'contact'];
+const ROUTES = ['home', 'classes', 'courses', 'coach', 'plans', 'blog', 'contact'];
 let pending = null;
 
 function selectTab(name){
@@ -1337,10 +1347,11 @@ const coachPortrait = CONFIG.coachPhoto || PHOTOS.coach;
 if(coachPortrait){ $('#portrait').insertAdjacentHTML('afterbegin', '<img alt="علی فهیمی، مربی ورزش کودکان" src="' + coachPortrait + '">'); }
 /* عکس‌ها، قیمت‌ها و نوار مهارت‌ها */
 $$('[data-photo]').forEach(im => { im.src = PHOTOS[im.dataset.photo]; });
+if(reduce) $$('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
 $$('[data-prices]').forEach(ul => { ul.innerHTML = PACKS[ul.dataset.prices].map(p => '<li><span>' + p.label + '</span><b>' + money(p.u) + '</b></li>').join(''); });
 $$('[data-ptag]').forEach(e => {
   const k = e.dataset.ptag;
-  e.textContent = k === 'g612' ? 'از ' + money(8) : k === 'g35' ? '۸ جلسه · ' + money(6) : money(2);
+  e.textContent = k === 'g612' ? 'از ' + money(8) : k === 'g35' ? '۸ جلسه · ' + money(6) : money(20);
 });
 const WORDS = ['تعادل', 'هماهنگی', 'چابکی', 'قدرت', 'استقامت', 'اعتمادبه‌نفس', 'بازی', 'رشد'];
 const strip = WORDS.map(w => '<span>' + w + '</span><i class="star"></i>').join('');
@@ -1368,7 +1379,7 @@ if(!reduce && 'IntersectionObserver' in window){
 
 // ورود نرم عناصر در زمان اسکرول، با رعایت تنظیم کاهش حرکت سیستم
 if(!reduce && 'IntersectionObserver' in window){
-  const revealTargets = $$('.svc,.group,.topic,.why-item,.crow,.slot,.article,.place,.banner,.collage .ph,.vibe,.cta-band');
+  const revealTargets = $$('.svc,.group,.topic,.why-item,.crow,.article,.place,.banner,.collage .ph,.vibe,.cta-band');
   const revealIO = new IntersectionObserver(entries => entries.forEach(entry => {
     if(entry.isIntersecting){ entry.target.classList.add('is-visible'); revealIO.unobserve(entry.target); }
   }), {threshold:.12,rootMargin:'0px 0px -24px 0px'});
