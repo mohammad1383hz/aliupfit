@@ -986,13 +986,13 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* قیمت‌ها: عدد هر بسته به «تومن» است و هر ۱ تومن برابر PRICE_UNIT تومان است.
    اگر منظورت از «۸ تومن» مبلغ دیگری است، فقط PRICE_UNIT را عوض کن. */
-const PRICE_UNIT = 100000;
+const PRICE_UNIT = 1000000;
 const money = u => fa((u * PRICE_UNIT).toLocaleString('en-US')).replace(/,/g, '٬') + ' تومان';
 const PACKS = {
   g612: [{id: 'کلاس گروهی', label: 'کلاس گروهی', u: 8}, {id: 'بسته ۲۰ جلسه‌ای', label: 'بسته ۲۰ جلسه‌ای', u: 10}],
   g35: [{id: '۸ جلسه', label: '۸ جلسه', u: 6}]
 };
-if(!CONFIG.prices.training) CONFIG.prices.training = money(20);
+if(!CONFIG.prices.training) CONFIG.prices.training = money(2);
 
 /* ---------- آیکن‌ها ---------- */
 const ICONS = {
@@ -1354,7 +1354,7 @@ if(reduce) $$('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v
 $$('[data-prices]').forEach(ul => { ul.innerHTML = PACKS[ul.dataset.prices].map(p => '<li><span>' + p.label + '</span><b>' + money(p.u) + '</b></li>').join(''); });
 $$('[data-ptag]').forEach(e => {
   const k = e.dataset.ptag;
-  e.textContent = k === 'g612' ? 'از ' + money(8) : k === 'g35' ? '۸ جلسه · ' + money(6) : money(20);
+  e.textContent = k === 'g612' ? 'از ' + money(8) : k === 'g35' ? '۸ جلسه · ' + money(6) : money(2);
 });
 const WORDS = ['تعادل', 'هماهنگی', 'چابکی', 'قدرت', 'استقامت', 'اعتمادبه‌نفس', 'بازی', 'رشد'];
 const strip = WORDS.map(w => '<span>' + w + '</span><i class="star"></i>').join('');
