@@ -343,13 +343,13 @@ h4{font-size:1rem;font-weight:700}
 .gal .ph img{position:absolute;inset:0}
 @media (max-width:640px){.gal{grid-template-columns:1fr}.gal .ph{min-height:0;aspect-ratio:4/3}}
 /* client photos and videos */
-/* whole photo visible (contain) over a blurred copy of itself */
+/* whole photo visible (contain) over a pre-blurred copy (no CSS filter: it renders blank in some Firefox setups) */
 .fit-photo{position:relative;overflow:hidden;background:var(--navy)}
-.fit-photo::before{content:"";position:absolute;inset:-30px;background:var(--photo) center/cover;filter:blur(22px) brightness(.7)}
 .fit-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .6s}
+.fit-photo>img.fp-bg{object-fit:cover}
 .svc-art.has-photo{place-items:end start;padding:16px 20px;min-height:0;aspect-ratio:16/10}
 .svc-art.has-photo::after{display:none}
-.svc:hover .svc-art.has-photo>img{transform:scale(1.03)}
+.svc:hover .svc-art.has-photo>img:not(.fp-bg){transform:scale(1.03)}
 .has-photo .age{background:var(--btn-red);border-radius:18px;padding:6px 16px 2px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
 .tone-navy.has-photo .age{background:var(--btn)}
 .has-photo .age b{font-size:clamp(2.4rem,5vw,3.2rem)}
@@ -514,11 +514,11 @@ body{background-size:240px 240px}
       </div>
       <div class="svc-grid">
         <a class="svc svc-lg" href="#classes" data-go="classes" data-group="g35" data-scroll="groups">
-          <div class="svc-art tone-red has-photo fit-photo" style="--photo:url('{{ asset('images/class-3-5.webp') }}')"><img src="{{ asset('images/class-3-5.webp') }}" alt="" width="960" height="1280" loading="lazy"><span class="age"><b>۳–۵</b><small>سال</small></span></div>
+          <div class="svc-art tone-red has-photo fit-photo"><img class="fp-bg" src="{{ asset('images/class-3-5-blur.webp') }}" alt="" aria-hidden="true" loading="lazy"><img src="{{ asset('images/class-3-5.webp') }}" alt="" width="960" height="1280" loading="lazy"><span class="age"><b>۳–۵</b><small>سال</small></span></div>
           <div class="svc-body"><h3>کلاس ورزش کودکان ۳ تا ۵ سال</h3><p>بازی‌های حرکتی متناسب با سن، برای تعادل و هماهنگی و یک تجربه شاد از ورزش. دو سانس در هفته.</p><span class="pill pill-red" data-ptag="g35"></span><span class="more">مشاهده کلاس <i data-i="arrow" data-s="18"></i></span></div>
         </a>
         <a class="svc svc-lg" href="#classes" data-go="classes" data-group="g612" data-scroll="groups">
-          <div class="svc-art tone-navy has-photo fit-photo" style="--photo:url('{{ asset('images/class-6-12.webp') }}')"><img src="{{ asset('images/class-6-12.webp') }}" alt="" width="1280" height="960" loading="lazy"><span class="age"><b>۶–۱۲</b><small>سال</small></span></div>
+          <div class="svc-art tone-navy has-photo fit-photo"><img class="fp-bg" src="{{ asset('images/class-6-12-blur.webp') }}" alt="" aria-hidden="true" loading="lazy"><img src="{{ asset('images/class-6-12.webp') }}" alt="" width="1280" height="960" loading="lazy"><span class="age"><b>۶–۱۲</b><small>سال</small></span></div>
           <div class="svc-body"><h3>کلاس ورزش کودکان ۶ تا ۱۲ سال</h3><p>آمادگی جسمانی در قالب بازی؛ قدرت، سرعت، چابکی و استقامت متناسب با سن.</p><span class="pill pill-red" data-ptag="g612"></span><span class="more">مشاهده کلاس <i data-i="arrow" data-s="18"></i></span></div>
         </a>
         <a class="svc" href="#plans" data-go="plans" data-tab="training">
@@ -643,7 +643,7 @@ body{background-size:240px 240px}
   <section class="sec" id="groups" style="padding-top:28px">
     <div class="wrap groups">
       <article class="group">
-        <figure class="g-photo fit-photo" style="--photo:url('{{ asset('images/class-6-12.webp') }}')"><img src="{{ asset('images/class-6-12.webp') }}" alt="علی فهیمی با شاگردان کلاس ۶ تا ۱۲ سال" width="1280" height="960" loading="lazy"></figure>
+        <figure class="g-photo fit-photo"><img class="fp-bg" src="{{ asset('images/class-6-12-blur.webp') }}" alt="" aria-hidden="true" loading="lazy"><img src="{{ asset('images/class-6-12.webp') }}" alt="علی فهیمی با شاگردان کلاس ۶ تا ۱۲ سال" width="1280" height="960" loading="lazy"></figure>
         <header class="g-head tone-navy"><span class="age"><b>۶–۱۲</b><small>سال</small></span><div><p class="kicker">گروه اول</p><h3>ورزش و آمادگی جسمانی کودکان</h3></div></header>
         <div class="g-body">
           <ul class="facts">
@@ -666,7 +666,7 @@ body{background-size:240px 240px}
       </article>
 
       <article class="group">
-        <figure class="g-photo fit-photo" style="--photo:url('{{ asset('images/class-3-5.webp') }}')"><img src="{{ asset('images/class-3-5.webp') }}" alt="علی فهیمی با یکی از شاگردان کلاس ۳ تا ۵ سال" width="960" height="1280" loading="lazy"></figure>
+        <figure class="g-photo fit-photo"><img class="fp-bg" src="{{ asset('images/class-3-5-blur.webp') }}" alt="" aria-hidden="true" loading="lazy"><img src="{{ asset('images/class-3-5.webp') }}" alt="علی فهیمی با یکی از شاگردان کلاس ۳ تا ۵ سال" width="960" height="1280" loading="lazy"></figure>
         <header class="g-head tone-red"><span class="age"><b>۳–۵</b><small>سال</small></span><div><p class="kicker">گروه دوم</p><h3>ورزش کودکان ۳ تا ۵ سال</h3></div></header>
         <div class="g-body">
           <div class="sess"><b>سانس اول</b><div class="row"><span><i data-i="calendar" data-s="18"></i>یکشنبه و سه‌شنبه</span><span><i data-i="clock" data-s="18"></i>۱۲:۰۰ تا ۱۳:۰۰</span><span data-cap="s35a"></span></div></div>
