@@ -344,6 +344,9 @@ h4{font-size:1rem;font-weight:700}
 @media (max-width:640px){.gal{grid-template-columns:1fr}.gal .ph{min-height:0;aspect-ratio:4/3}}
 /* client photos and videos */
 /* whole photo visible (contain) over a pre-blurred copy (no CSS filter: it renders blank in some Firefox setups) */
+.svc-art.duo{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:0;min-height:0;height:clamp(200px,20vw,260px)}
+.svc-art.duo::after{display:none}
+.svc-art.duo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .fit-photo{position:relative;overflow:hidden;background:var(--navy)}
 .fit-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .6s}
 .fit-photo>img.fp-bg{object-fit:cover}
@@ -478,7 +481,7 @@ body{background-size:240px 240px}
       <div class="hero-copy rise">
         <p class="eyebrow">مربی ورزش کودکان و نوجوانان</p>
         <h1><span>بازی کن،</span><span>حرکت کن،</span><span class="hl">رشد کن!</span></h1>
-        <p class="lead" data-type>من علی فهیمی هستم؛ مربی ورزش کودکان و نوجوانان و کارشناس علوم ورزشی دانشگاه تهران.</p>
+        <p class="lead" data-type>من علی فهیمی هستم؛ مربی ورزش کودکان و نوجوانان.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#classes" data-go="classes">مشاهده کلاس‌ها و ثبت‌نام <i data-i="arrow"></i></a>
           <a class="btn btn-ghost" href="#coach" data-go="coach">آشنایی با مربی</a>
@@ -486,7 +489,6 @@ body{background-size:240px 240px}
         <p class="muted">در کلاس‌های من، کودکان با انجام بازی‌های هدفمند، مهارت‌های حرکتی خود را تقویت می‌کنند، آمادگی جسمانی بهتری به دست می‌آورند و در محیطی پویا و متناسب با سن خود فعالیت می‌کنند.</p>
         <p class="muted">هدف من این است که ورزش برای کودکان فقط یک تمرین نباشد؛ بلکه تجربه‌ای لذت‌بخش برای رشد جسمی، افزایش اعتمادبه‌نفس و شکل‌گیری عادت‌های سالم باشد.</p>
         <div class="facts-row">
-          <div class="fact"><i data-i="award" data-s="26"></i><span><b>دانشگاه تهران</b>کارشناس علوم ورزشی</span></div>
           <div class="fact"><i data-i="users" data-s="26"></i><span><b>۳ تا ۱۲ سال</b>دو گروه سنی</span></div>
           <div class="fact"><i data-i="pin" data-s="26"></i><span><b>تهران</b>خیابان آزادی</span></div>
         </div>
@@ -530,8 +532,8 @@ body{background-size:240px 240px}
           <div class="svc-body"><h3>برنامه و راهنمای تغذیه</h3><p>راهنمای تغذیه متناسب با اهداف ورزشی و عادت‌های غذایی شما.</p><span class="more">درخواست راهنما <i data-i="arrow" data-s="18"></i></span></div>
         </a>
         <a class="svc" href="#plans" data-go="plans" data-tab="assessment">
-          <div class="svc-art tone-soft"><i data-i="chart" data-s="56"></i></div>
-          <div class="svc-body"><h3>ارزیابی آمادگی جسمانی و مهارت‌های حرکتی کودکان</h3><p>تصویری روشن از نقطه شروع کودک و مسیر پیشرفتش.</p><span class="more">درخواست ارزیابی <i data-i="arrow" data-s="18"></i></span></div>
+          <div class="svc-art tone-soft duo"><img src="{{ asset('images/assessment-2.webp') }}" alt="ارزیابی ترکیب بدن کودک با دستگاه بادی‌آنالیز" width="960" height="1280" loading="lazy"><img src="{{ asset('images/assessment-1.webp') }}" alt="پرونده ارزیابی و پایش ورزش کودک AliUPFit" width="960" height="1280" loading="lazy"></div>
+          <div class="svc-body"><h3>ارزیابی آمادگی جسمانی و مهارت‌های حرکتی کودکان</h3><p>ارزیابی کامل کودک: سن رشد، دستگاه بادی‌آنالیز، آزمون‌های روان‌شناسی و آمادگی جسمانی.</p><span class="more">درخواست ارزیابی <i data-i="arrow" data-s="18"></i></span></div>
         </a>
       </div>
     </div>
